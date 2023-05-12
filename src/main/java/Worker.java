@@ -1,10 +1,16 @@
-import java.time.Instant;
-
 public class Worker {
 
-    String name;
-    String birthDate;
-    String endDate;
+    private String name;
+    private String birthDate;
+    protected String endDate;
+
+    public Worker() {
+    }
+
+    public Worker(String name, String birthDate) {
+        this.name = name;
+        this.birthDate = birthDate;
+    }
 
     public Worker(String name, String birthDate, String endDate) {
         this.name = name;
@@ -12,15 +18,26 @@ public class Worker {
         this.endDate = endDate;
     }
 
-    private int getAge() {
-        return 36;
+    public int getAge() {
+        int currentYear = 2025;
+        int birthYear = Integer.parseInt(birthDate.substring(6));
+        return (currentYear - birthYear);
     }
 
-    private double collectPay() {
-        return 20d;
+    public double collectPay() {
+        return 0.0;
     }
 
-    private void terminate(String endDate) {
-        this.endDate = Instant.now().toString();
+    public void terminate(String endDate) {
+        this.endDate = endDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Worker{" +
+                "name='" + name + '\'' +
+                ", birthDate='" + birthDate + '\'' +
+                ", endDate='" + endDate + '\'' +
+                '}';
     }
 }
